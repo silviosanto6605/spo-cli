@@ -1,0 +1,15 @@
+{
+  "name": "spoti-cli",
+  "version": "1.0.0",
+  "description": "Spotify Client for command line",
+  "main": "index.js",
+  "author": "Silvio Santoriello",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "open": "^8.2.1",
+    "path": "^0.12.7",
+    "query-string": "^7.0.1"
+  }
+}
