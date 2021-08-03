@@ -27,7 +27,20 @@ exports.basicSongInfo = function () {
 }
 exports.play = function () {
     axios.put('https://api.spotify.com/v1/me/player/play').then((response) => {
-        console.log("⏵Playing/Resuming⏵");
+        console.log("⏵Playing⏵");
+    }).catch(function (error) {
+        {
+            if (error.response.status == 401) {
+                console.log(chalk.red("ERROR! Spotify is not running or auth code is expired"));
+            } else if (error.response.status == 403) {
+                console.log(chalk.red("ERROR! Song is already playing"));
+            }
+        }
+    })
+}
+exports.resume = function () {
+    axios.put('https://api.spotify.com/v1/me/player/play').then((response) => {
+        console.log("⏵Resuming⏵");
     }).catch(function (error) {
         {
             if (error.response.status == 401) {

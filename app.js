@@ -10,6 +10,9 @@ switch (process.argv[2]) {
     case 'play':
         client.play();
         break;
+    case 'resume':
+        client.resume();
+        break;
     case 'pause':
         client.pause();
         break;
