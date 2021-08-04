@@ -2,7 +2,8 @@
   "name": "spoti-cli",
   "version": "1.0.0",
   "description": "Spotify Client for command line",
-  "main": "index.js",
+  "main": "app.js",
+  "bin": "app.js",
   "author": "Silvio Santoriello",
   "license": "MIT",
   "dependencies": {
@@ -11,5 +12,10 @@
     "express": "^4.17.1",
     "open": "^8.2.1",
     "prompt": "^1.1.0"
+  },
+  "pkg": {
+    "scripts": "*.js",
+    "assets": ["public/auth.html"],
+    "outputPath": "dist/"
   }
 }
