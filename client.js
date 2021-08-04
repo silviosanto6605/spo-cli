@@ -1,9 +1,10 @@
+/* Spoti-cli client for getting infos and playback control 
+    Silvio Santoriello 2021
+*/
+
 const axios = require('axios');
 const fs = require('fs');
 const chalk = require('chalk');
-const {
-    type
-} = require('os');
 
 
 var code = fs.readFileSync('token.txt', 'utf8');
