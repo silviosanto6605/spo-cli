@@ -54,8 +54,11 @@ axios.get('https://api.spotify.com/v1/me/player').then((response) => {
                 client.shuffle("true");
                 break;
 
-            case 'unshuffle':
-                client.shuffle("false");
+            case 'volume':
+                client.volume(process.argv[3]);
+                break;
+            case 'vol':
+                client.volume(process.argv[3]);
                 break;
 
 

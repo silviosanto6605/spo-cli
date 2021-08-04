@@ -109,3 +109,18 @@ exports.shuffle = function (state) {
     })
 
 }
+exports.volume = function (value) {
+    axios.put('https://api.spotify.com/v1/me/player/volume?volume_percent='+value).then((response) => {
+        console.log("Volume set to "+value+"%");
+    }).catch(function (error) {
+        {
+            if (error.response.status == 401) {
+                console.log(chalk.red("ERROR! Spotify is not running or auth code is expired"));
+            } else if (error.response.status == 403) {
+                console.log(chalk.red("ERROR! Can't change volume"));
+            }else if (error.response.status == 400) {
+                console.log(chalk.red("ERROR! Value must be in range 0-100%"));
+            }
+        }
+    })
+}
