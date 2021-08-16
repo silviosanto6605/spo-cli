@@ -1,6 +1,6 @@
 {
   "name": "spoti-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Spotify Client for command line",
   "main": "app.js",
   "bin": "app.js",
