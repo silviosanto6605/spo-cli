@@ -1,3 +1,6 @@
+/* Spoti-cli app
+    Silvio Santoriello 2021
+*/
 const axios = require('axios');
 const fs = require('fs');
 const tokenPath = "./token.txt";
@@ -5,10 +8,6 @@ const {
     response
 } = require('express');
 var code;
-
-/* Spoti-cli app
-    Silvio Santoriello 2021
-*/
 
 // Check that the file exists locally
 if (!fs.existsSync(tokenPath)) {
@@ -75,5 +74,3 @@ axios.get('https://api.spotify.com/v1/me/player').then((response) => {
     console.log("Token is invalid, authorize app again");
     auth.startServer();
 });
-
-
