@@ -1,13 +1,17 @@
-/* Spoti-cli client for getting infos and playback control 
+/* spo-cli client for getting infos and playback control 
     Silvio Santoriello 2021
 */
 
 const axios = require('axios');
 const fs = require('fs');
 const chalk = require('chalk');
+const os = require('os');
+const path = require('path');
+const tokenPath = path.join(os.tmpdir(),"token.txt");
 
 
-var code = fs.readFileSync('token.txt', 'utf8');
+
+var code = fs.readFileSync(tokenPath, 'utf8');
 axios.defaults.headers.common['Authorization'] = "Bearer " + code;
 
 function normalizeMsTime(currentMsTime) {

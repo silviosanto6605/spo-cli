@@ -1,4 +1,4 @@
-/* Spoti-cli client authorization server 
+/* spo-cli client authorization server 
     Silvio Santoriello 2021
 */
 
@@ -7,8 +7,11 @@ const path = require('path');
 const open = require('open');
 const fs = require('fs');
 const prompt = require('prompt');
+const os = require('os');
+const tokenPath = path.join(os.tmpdir(),"token.txt");
 prompt.start();
 
+const AUTH_URL = "https://accounts.spotify.com/authorize?client_id=6ec2cafb7a25488e813f0359a4bd9ff5&response_type=token&redirect_uri=http://localhost:8888&scope=user-read-playback-state,user-modify-playback-state"
 
 exports.startServer = function () {
     const app = express();
@@ -21,10 +24,11 @@ exports.startServer = function () {
 
     app.get('/callback', function (req, res) {
         token = req.query.code;
-        fs.writeFileSync('token.txt', token);
+        fs.writeFileSync(tokenPath, token);
         process.exit(1);
     });
 
     app.listen(port);
-    open("https://accounts.spotify.com/authorize?client_id=6ec2cafb7a25488e813f0359a4bd9ff5&response_type=token&redirect_uri=http://localhost:8888&scope=user-read-playback-state,user-modify-playback-state");
+    console.log("You need to authorize the app to access your Spotify account. If browser does not open automatically, go to\n" + AUTH_URL+"\n");
+    open(AUTH_URL);
 }

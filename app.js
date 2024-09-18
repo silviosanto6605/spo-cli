@@ -1,9 +1,13 @@
-/* Spoti-cli app
-    Silvio Santoriello 2021
+#!/usr/bin/env node
+
+/* Spo-cli app
+    Silvio Santoriello 2024
 */
 const axios = require('axios');
 const fs = require('fs');
-const tokenPath = "./token.txt";
+const os = require('os');
+const path = require('path');
+const tokenPath = path.join(os.tmpdir(),"token.txt");
 const {
     response
 } = require('express');
@@ -17,7 +21,7 @@ if (!fs.existsSync(tokenPath)) {
 
 // The file *does* exist
 else if (fs.existsSync(tokenPath)) {
-    code = fs.readFileSync('token.txt', 'utf8');
+    code = fs.readFileSync(tokenPath, 'utf8');
     axios.defaults.headers.common['Authorization'] = "Bearer " + code;
 }
 
@@ -60,7 +64,10 @@ axios.get('https://api.spotify.com/v1/me/player').then((response) => {
                 client.volume(process.argv[3]);
                 break;
 
-
+            case 'reauth':
+                fs.unlinkSync(tokenPath);
+                auth.startServer();
+                break;
         }
     }
 

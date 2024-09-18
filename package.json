@@ -1,9 +1,15 @@
 {
-  "name": "spoti-cli",
-  "version": "1.0.2",
+  "name": "spo-cli",
+  "version": "1.0.4",
   "description": "Spotify Client for command line",
   "main": "app.js",
-  "bin": "app.js",
+  "bin": {
+    "spo-cli": "./app.js"
+  },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/silviosanto6605/spo-cli.git"
+},
   "author": "Silvio Santoriello",
   "license": "MIT",
   "dependencies": {
@@ -13,13 +19,7 @@
     "express": "^4.17.1",
     "lowdb": "^3.0.0",
     "open": "^8.2.1",
+    "pkg": "^5.8.1",
     "prompt": "^1.1.0"
-  },
-  "pkg": {
-    "scripts": "*.js",
-    "assets": [
-      "public/auth.html"
-    ],
-    "outputPath": "dist/"
   }
 }
